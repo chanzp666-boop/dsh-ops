@@ -2,33 +2,32 @@
 # browser half on the row whose specifier is the package name, so this row also
 # carries the Plugins-page configuration for every feature.
 #
-# Each section owns its enable switch and only the keys that feature reads. The
-# data capture and the TUI integration stay off by default. Legacy component modules (mode-*, discovery, panel, tui, shell,
-# file, ptc, hide-official, background) remain exported: a saved override for one
-# of those specifiers still loads its legacy module, it just cannot match this row.
+# macOS port (see docs/MACOS-PORT.md): starts with the Standard resident file
+# tools only. hideOfficialTools stays false so the official read/glob/grep remain
+# available until ops_* publication is observed; bash, ptc, cordis, discovery,
+# panel and tui stay off for the first verification round.
 - insert:
     - id: dsh-ops
       name: dsh-ops
       config:
-        # Four bundle switches (one per preset switch), then each preset; all default on.
         global:
-          bash: true
-          hidePwsh: true
-          hideOfficialTools: true
-          dynamicTools: true
+          bash: false
+          hidePwsh: false
+          hideOfficialTools: false
+          dynamicTools: false
         minimal:
-          enabled: true
+          enabled: false
         standard:
           enabled: true
           residentTools: true
         ptc:
-          enabled: true
-          residentTools: true
+          enabled: false
+          residentTools: false
         cordis:
-          enabled: true
-          residentTools: true
+          enabled: false
+          residentTools: false
         discovery:
-          enabled: true
+          enabled: false
         panel:
           enabled: false
         tui:
